@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados das Cidades</title>
+</head>
+<body>
+    
+    <select name="estados" id="estados" onchange="pegarCidades(this)">
+        <option value="">Selecione</option>
+        <option value="ba">Bahia</option>
+        <option value="se">Sergipe</option>
+    </select>
+
+    <select name="cidades" id="cidades" onchange="inserirNoIframe(this)">
+        <option value="">Selecione</option>
+    </select>
+
+    <iframe src="" frameborder="0"></iframe>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
