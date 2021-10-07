@@ -31,19 +31,46 @@ const inserirCidades = (dados = []) => {
 
 }
 
-const abrirWikipedia = (cidades) => {
+const abrirWikipedia = async (cidades) => {
 
-    const semEspacos = cidades.value.replaceAll(" ", "_")
+    const estados = document.querySelector("#estados")
+    const estadoSelecionado = estados.selectedOptions[0].innerText
 
-    window.open(`https://pt.wikipedia.org/wiki/${semEspacos}`)
+    const estadoSemEspacos = estadoSelecionado.replaceAll(" ", "%20")
+    const cidadeSemEspacos = cidades.value.replaceAll(" ", "%20")
+
+    const linkComEstado = `https://pt.wikipedia.org/w/api.php?action=opensearch&origin=*&search=${cidadeSemEspacos}|${estadoSemEspacos}`
+    const linkSemEstado = `https://pt.wikipedia.org/w/api.php?action=opensearch&origin=*&search=${cidadeSemEspacos}`
+
+    let dados = await pegarRotas(linkComEstado)
+
+    if(dados[3].length == 0) {
+        dados = await pegarRotas(linkSemEstado)
+    }
+
+    if(!dados || dados.length != 4) return
+
+    window.open(dados[3][0], "_blank")
 
 }
 
-const inserirNoIframe = (cidades) => {
+const pegarRotas = async (link) => {
+
+    const dados = await fetch(link)
+        .then(resp => resp.json())
+        .catch(error => false)
+
+    console.log(dados)
+
+    return dados
+
+}
+
+/*const inserirNoIframe = (cidades) => {
 
     const iframe = document.querySelector("iframe")
     const semEspacos = cidades.value.replaceAll(" ", "_")
 
     iframe.src = `https://pt.wikipedia.org/wiki/${semEspacos}`
 
-}
+}*/
