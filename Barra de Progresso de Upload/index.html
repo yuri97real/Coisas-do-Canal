@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Upload File</title>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body class="container">
+
+    <h4>Progress Upload File</h4>
+
+    <form class="center" enctype="multipart/form-data">
+        <div class="file-field input-field">
+        <div class="btn">
+            <span>Arquivos</span>
+            <input type="file" name="files[]" multiple>
+        </div>
+        <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+        </div>
+        </div>
+
+        <button class="btn-large" type="submit">Enviar</button>
+    </form>
+
+    <div class="progress">
+        <div class="determinate" style="width: 0%"></div>
+    </div>
+    
+    <script src="script.js"></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>M.AutoInit()</script>
+    
+</body>
+</html>
